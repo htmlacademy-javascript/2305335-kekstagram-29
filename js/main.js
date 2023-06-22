@@ -67,4 +67,5 @@ const createPicture = () => ({
 });
 
 const getPictures = Array.from({length: PHOTO_COUNT}, createPicture);
-getPictures ();
+
+export {getPictures}; //Чтобы не ругался линтер
