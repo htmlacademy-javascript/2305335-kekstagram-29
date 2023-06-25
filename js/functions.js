@@ -26,3 +26,15 @@ const extractNumber = (string) => {
   return +result;
 };
 extractNumber ('год 2023');
+
+const calculateTime = (start, finish, startMeeting, duration) => {
+  const finishTimeNumber = finish.split(':').map (Number);
+  const resultfinishTime = finishTimeNumber[0] * 60 + finishTimeNumber[1];
+  const startMeetingTimeNumber = startMeeting.split(':').map (Number);
+  const resultStartMeetingTime = startMeetingTimeNumber[0] * 60 + startMeetingTimeNumber[1];
+  if (duration <= resultfinishTime - resultStartMeetingTime) {
+    return true;
+  }
+  return false;
+};
+calculateTime('08:00', '17:30', '14:00', 90);
