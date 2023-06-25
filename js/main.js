@@ -1,3 +1,3 @@
 import {getPictures} from './data.js';
-
-getPictures();
+const fn = () => getPictures;
+fn ();
