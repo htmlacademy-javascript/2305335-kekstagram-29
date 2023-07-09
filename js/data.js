@@ -44,6 +44,6 @@ const createPicture = () => ({
   }
 });
 
-const getPictures = Array.from({length: PHOTO_COUNT}, createPicture);
+const getPictures = () => Array.from({length: PHOTO_COUNT}, createPicture);
 
 export {getPictures};

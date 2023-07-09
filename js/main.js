@@ -1,3 +1,4 @@
-import {getPictures} from './data.js';
-const fn = () => getPictures;
-fn ();
+import {renderPictures} from './thumbnails.js';
+
+const render = () => renderPictures;
+render();
