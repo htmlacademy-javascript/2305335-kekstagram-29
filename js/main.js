@@ -1,4 +1,5 @@
+import {getPictures} from './data.js';
 import {renderPictures} from './thumbnails.js';
 
-const render = () => renderPictures;
-render();
+const arrPictures = getPictures();
+renderPictures(arrPictures);
