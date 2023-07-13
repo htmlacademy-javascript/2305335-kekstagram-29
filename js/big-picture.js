@@ -46,10 +46,10 @@ const onCancelButtonClick = () => {
 };
 
 const renderPictureDetails = ({url, likes, description}) => {
-  bigPictureElement.querySelector('big-picture__img').src = url;
-  bigPictureElement.querySelector('big-picture__img').alt = description;
-  bigPictureElement.querySelector('likes-count').textContent = likes;
-  bigPictureElement.querySelector('social__caption').textContent = description;
+  bigPictureElement.querySelector('.big-picture__img img').src = url;
+  bigPictureElement.querySelector('.big-picture__img img').alt = description;
+  bigPictureElement.querySelector('.likes-count').textContent = likes;
+  bigPictureElement.querySelector('.social__caption').textContent = description;
 };
 
 const showBigPicture = (data) => {
