@@ -1,5 +1,5 @@
 import {isEscapeKey} from './utils.js';
-import { validatePristine } from './form-validation.js';
+import {pristine} from './form-validation.js';
 
 const bodyElement = document.querySelector('body');
 const uploadForm = document.querySelector('.img-upload__form');
@@ -25,7 +25,7 @@ function openUploadModal () {
 
 function closeUploadModal () {
   uploadForm.reset();
-  validatePristine.reset();
+  pristine.reset();
   bodyElement.classList.remove('modal-open');
   uploadOverlay.classList.add('hidden');
   document.removeEventListener('keydown', onWindowKeyDown);
@@ -35,5 +35,12 @@ function closeUploadModal () {
 const renderModalForm = () => {
   uploadFile.addEventListener('change', openUploadModal);
 };
+
+uploadForm.addEventListener('submit', (evt) => {
+  const isValid = pristine.validate();
+  if (!isValid) {
+    evt.preventDefault();
+  }
+});
 
 export { renderModalForm };
