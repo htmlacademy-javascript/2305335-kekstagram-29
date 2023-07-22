@@ -1,6 +1,6 @@
 const EFFECTS = [
   {
-    name : 'original',
+    name : 'none',
     style : 'none',
     min : 0 ,
     max : 100,
