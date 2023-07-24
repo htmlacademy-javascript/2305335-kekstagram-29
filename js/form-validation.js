@@ -37,4 +37,4 @@ pristine.addValidator(textHashtags, hasValidTags, ErrorMessages.INVALID_HASHTAG,
 pristine.addValidator(textHashtags, hasUniqueTags, ErrorMessages.NOT_UNIQUE, 2, true);
 pristine.addValidator(textDescription, hasValidCountLengthComment, ErrorMessages.INVALID_LENGTH_COMMENT, 1, true);
 
-export { pristine };
+export {pristine};
