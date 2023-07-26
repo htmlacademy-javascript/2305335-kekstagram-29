@@ -129,4 +129,4 @@ const resetEffects = () => {
   updateSettingsSlider();
 };
 
-export {setDefaultSlider, resetEffects,addEffectListener,removeEffectListener};
+export {setDefaultSlider, resetEffects, addEffectListener, removeEffectListener};
