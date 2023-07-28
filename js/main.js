@@ -9,14 +9,14 @@ import {addFileChooserListener} from './img-upload-file.js';
 
 getData().then((picturesArray)=>{
   const debouncedRenderGallery = debounce (renderGallery);
-   renderGallery(picturesArray);
-   showFilters(picturesArray, debouncedRenderGallery);
-   renderModalForm(picturesArray)
- })
-   .catch((err) => {
-      showAlert(err.message);
-    }
-   );
+  renderGallery(picturesArray);
+  showFilters(picturesArray, debouncedRenderGallery);
+  renderModalForm(picturesArray);
+})
+  .catch((err) => {
+    showAlert(err.message);
+  }
+  );
 
 setDefaultSlider();
 setUserFormSubmit();
