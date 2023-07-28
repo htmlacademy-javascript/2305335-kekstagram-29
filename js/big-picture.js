@@ -1,5 +1,5 @@
-import { isEscapeKey } from './utils.js';
-const COMMENTS_PER_PORTION = 5;
+import {isEscapeKey} from './utils.js';
+import {COMMENTS_PER_PORTION} from './data.js';
 
 const bigPictureElement = document.querySelector('.big-picture');
 const commentsShownCountElement = bigPictureElement.querySelector('.comments-shown-count');

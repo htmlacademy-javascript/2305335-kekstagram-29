@@ -4,6 +4,7 @@ import {resetScale, addListenersToScaleButton, removeListenersToScaleButton} fro
 import {addEffectListener,removeEffectListener,resetEffects} from'./filters.js';
 import {sendData} from './api.js';
 import {createSuccessMessage} from './message.js';
+import {SubmitButtonText} from './data.js';
 
 const bodyElement = document.querySelector('body');
 const uploadForm = document.querySelector('.img-upload__form');
@@ -13,11 +14,6 @@ const uploadModalCancel = bodyElement.querySelector('.img-upload__cancel');
 const buttonUploadImgSubmit = document.querySelector('.img-upload__submit');
 const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
-
-const SubmitButtonText = {
-  IDLE: 'Опубликовать',
-  SENDING: 'Сохраняю...'
-};
 
 const onWindowKeyDown = (evt) => {
   if (isEscapeKey(evt) && (!evt.target.closest('.img-upload__field-wrapper'))) {

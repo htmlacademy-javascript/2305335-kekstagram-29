@@ -1,14 +1,4 @@
-const BASE_URL = 'https://29.javascript.pages.academy/kekstagram';
-
-const Route = {
-  GET_DATA: '/data',
-  SEND_DATA: '/',
-};
-
-const ErrorText = {
-  GET_DATA: 'Не удалось загрузить данные. Попробуйте обновить страницу',
-  SEND_DATA: 'Не удалось отправить форму. Попробуйте ещё раз',
-};
+import {BASE_URL, Route, ErrorText} from './data.js';
 
 const getData = () =>
   fetch(`${BASE_URL}${Route.GET_DATA}`)

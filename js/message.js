@@ -1,9 +1,5 @@
 import {isEscapeKey} from './utils.js';
-
-const Answers = {
-  SUCCESS: 'success',
-  ERROR: 'error'
-};
+import {Answers} from './data.js';
 
 const createSuccessMessage = (success = true) => {
   let typeMessage;
@@ -37,7 +33,6 @@ const createSuccessMessage = (success = true) => {
   function onSuccessClick () {
     closeMessage();
   }
-
 
   function onOutSideClick(evt) {
     if(evt.target === currentMessage){
