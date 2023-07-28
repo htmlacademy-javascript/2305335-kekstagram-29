@@ -72,7 +72,7 @@ uploadForm.addEventListener('change', () => {
 });
 
 const startSendData = () => {
-  unblockSubmitButton();
+  blockSubmitButton();
   buttonUploadImgSubmit.textContent = SubmitButtonText.SENDING;
   textHashtags.readOnly = true;
   textDescription.readOnly = true;
