@@ -18,8 +18,8 @@ const getFilters = (pictures, filterButton) => {
     return pictures;
   }
   if (filterButton.id === FilterType.RANDOM) {
-    const firstElement = getRandomInteger(0, pictures.length-COUNT_RANDOM_PHOTOS);
-    return pictures.slice(firstElement, firstElement+COUNT_RANDOM_PHOTOS);
+    const firstElement = getRandomInteger(0, pictures.length - COUNT_RANDOM_PHOTOS);
+    return pictures.slice(firstElement, firstElement + COUNT_RANDOM_PHOTOS);
   }
   if (filterButton.id === FilterType.DISCUSSED) {
     return pictures.slice().sort((a, b)=>(b.comments.length - a.comments.length));
