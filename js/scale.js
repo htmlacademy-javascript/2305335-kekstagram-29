@@ -1,7 +1,4 @@
-const SCALE_STEP = 25;
-const SCALE_MIN = 25;
-const SCALE_MAX = 100;
-const SCALE_DEFAULT = 100;
+import {SCALE_STEP, SCALE_MIN, SCALE_MAX, SCALE_DEFAULT} from './data.js';
 
 const smallerButton = document.querySelector('.scale__control--smaller');
 const biggerButton = document.querySelector('.scale__control--bigger');
@@ -45,4 +42,4 @@ const removeListenersToScaleButton = () => {
   biggerButton.removeEventListener('click', onBiggerButtonClick);
 };
 
-export { resetScale, addListenersToScaleButton, removeListenersToScaleButton};
+export {resetScale, addListenersToScaleButton, removeListenersToScaleButton};

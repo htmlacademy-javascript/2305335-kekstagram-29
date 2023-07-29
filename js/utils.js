@@ -1,5 +1,4 @@
-const ALERT_SHOW_TIME = 5000;
-const DEBOUNCE_TIME = 500;
+import {ALERT_SHOW_TIME, DEBOUNCE_TIME} from './data.js';
 
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
