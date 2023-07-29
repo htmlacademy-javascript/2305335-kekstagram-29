@@ -41,15 +41,4 @@ function debounce (callback, timeoutDelay = DEBOUNCE_TIME) {
   };
 }
 
-function throttle (callback, delayBetweenFrames) {
-  let lastTime = 0;
-  return (...rest) => {
-    const now = new Date();
-    if (now - lastTime >= delayBetweenFrames) {
-      callback.apply(this, rest);
-      lastTime = now;
-    }
-  };
-}
-
-export {getRandomInteger, isEscapeKey, showAlert, debounce, throttle};
+export {getRandomInteger, isEscapeKey, showAlert, debounce};

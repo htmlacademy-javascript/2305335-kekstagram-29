@@ -1,5 +1,4 @@
 import {renderGallery} from './gallery.js';
-import {renderModalForm} from './form.js';
 import {setDefaultSlider} from './filters.js';
 import {getData} from './api.js';
 import {setUserFormSubmit} from './form.js';
@@ -11,7 +10,6 @@ getData().then((picturesArray)=>{
   const debouncedRenderGallery = debounce (renderGallery);
   renderGallery(picturesArray);
   showFilters(picturesArray, debouncedRenderGallery);
-  renderModalForm(picturesArray);
 })
   .catch((err) => {
     showAlert(err.message);

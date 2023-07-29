@@ -68,6 +68,11 @@ const Route = {
   SEND_DATA: '/',
 };
 
+const Method = {
+  GET: 'GET',
+  POST: 'POST',
+};
+
 const ErrorText = {
   GET_DATA: 'Не удалось загрузить данные. Попробуйте обновить страницу',
   SEND_DATA: 'Не удалось отправить форму. Попробуйте ещё раз',
@@ -96,4 +101,4 @@ const Answers = {
   ERROR: 'error'
 };
 
-export {BASE_URL, Route, ErrorText, COMMENTS_PER_PORTION, EFFECTS, HASHTAG_MAX_COUNT, HASHTAG_MAX_LENGTH, COMMENT_MAX_LENGTH, HASHTAG_VALID, ErrorMessages, SubmitButtonText, COUNT_RANDOM_PHOTOS, FilterType, FILE_TYPES, Answers, SCALE_STEP, SCALE_MIN, SCALE_MAX, SCALE_DEFAULT, ALERT_SHOW_TIME, DEBOUNCE_TIME};
+export {BASE_URL, Route, ErrorText, COMMENTS_PER_PORTION, EFFECTS, HASHTAG_MAX_COUNT, HASHTAG_MAX_LENGTH, COMMENT_MAX_LENGTH, HASHTAG_VALID, ErrorMessages, SubmitButtonText, COUNT_RANDOM_PHOTOS, FilterType, FILE_TYPES, Answers, SCALE_STEP, SCALE_MIN, SCALE_MAX, SCALE_DEFAULT, ALERT_SHOW_TIME, DEBOUNCE_TIME, Method};
