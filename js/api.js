@@ -1,7 +1,7 @@
-import {BASE_URL, Route, ErrorText} from './data.js';
+import {BASE_URL, Route, ErrorText, Method} from './data.js';
 
-const getData = () =>
-  fetch(`${BASE_URL}${Route.GET_DATA}`)
+const load = (route, errorText, method = Method.GET, body = null) =>
+  fetch(`${BASE_URL}${route}`, { method, body })
     .then((response) => {
       if (!response.ok) {
         throw new Error();
@@ -9,24 +9,11 @@ const getData = () =>
       return response.json();
     })
     .catch(() => {
-      throw new Error(ErrorText.GET_DATA);
+      throw new Error(errorText);
     });
 
-const sendData = (body, onSuccess) =>
-  fetch(`${BASE_URL}${Route.SEND_DATA}`,
-    {
-      method: 'POST',
-      body,
-    })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error();
-      } else {
-        onSuccess();
-      }
-    })
-    .catch(() => {
-      throw new Error(ErrorText.SEND_DATA);
-    });
+const getData = () => load(Route.GET_DATA, ErrorText.GET_DATA);
+
+const sendData = (body) => load(Route.SEND_DATA, ErrorText.SEND_DATA, Method.POST, body);
 
 export {getData, sendData};

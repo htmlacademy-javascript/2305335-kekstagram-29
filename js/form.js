@@ -6,11 +6,11 @@ import {sendData} from './api.js';
 import {createSuccessMessage} from './message.js';
 import {SubmitButtonText} from './data.js';
 
-const bodyElement = document.querySelector('body');
+const body = document.querySelector('body');
 const uploadForm = document.querySelector('.img-upload__form');
-const uploadFile = bodyElement.querySelector('#upload-file');
-const uploadOverlay = bodyElement.querySelector('.img-upload__overlay');
-const uploadModalCancel = bodyElement.querySelector('.img-upload__cancel');
+const uploadFile = body.querySelector('#upload-file');
+const uploadOverlay = body.querySelector('.img-upload__overlay');
+const uploadModalCancel = body.querySelector('.img-upload__cancel');
 const buttonUploadImgSubmit = document.querySelector('.img-upload__submit');
 const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
@@ -24,8 +24,21 @@ const onWindowKeyDown = (evt) => {
 
 const onUploadModalCancelClick = () => closeUploadModal();
 
+function closeUploadModal () {
+  uploadForm.reset();
+  pristine.reset();
+  body.classList.remove('modal-open');
+  uploadOverlay.classList.add('hidden');
+  document.removeEventListener('keydown', onWindowKeyDown);
+  uploadModalCancel.removeEventListener('click', onUploadModalCancelClick);
+  removeListenersToScaleButton();
+  removeEffectListener();
+  resetEffects();
+  resetScale();
+}
+
 function openUploadModal () {
-  bodyElement.classList.add('modal-open');
+  body.classList.add('modal-open');
   uploadOverlay.classList.remove('hidden');
   document.addEventListener('keydown', onWindowKeyDown);
   uploadModalCancel.addEventListener('click',onUploadModalCancelClick);
@@ -33,22 +46,8 @@ function openUploadModal () {
   addEffectListener();
 }
 
-function closeUploadModal () {
-  uploadForm.reset();
-  pristine.reset();
-  resetScale();
-  bodyElement.classList.remove('modal-open');
-  uploadOverlay.classList.add('hidden');
-  document.removeEventListener('keydown', onWindowKeyDown);
-  uploadModalCancel.removeEventListener('click', onUploadModalCancelClick);
-  removeListenersToScaleButton();
-  removeEffectListener();
-  resetEffects();
-}
-
-const renderModalForm = () => {
-  uploadFile.addEventListener('change', openUploadModal);
-};
+const onUploadModalClick = () => openUploadModal();
+uploadFile.addEventListener('change', onUploadModalClick);
 
 const blockSubmitButton = () => {
   buttonUploadImgSubmit.disabled = true;
@@ -58,23 +57,14 @@ const unblockSubmitButton = () => {
   buttonUploadImgSubmit.disabled = false;
 };
 
-uploadForm.addEventListener('change', () => {
-  const isValid = pristine.validate();
-  if (!isValid) {
-    blockSubmitButton();
-  } else {
-    unblockSubmitButton();
-  }
-});
-
-const startSendData = () => {
+const startSendingData = () => {
   blockSubmitButton();
   buttonUploadImgSubmit.textContent = SubmitButtonText.SENDING;
   textHashtags.readOnly = true;
   textDescription.readOnly = true;
 };
 
-const EndSendData = () => {
+const EndSendingData = () => {
   unblockSubmitButton();
   buttonUploadImgSubmit.textContent = SubmitButtonText.IDLE;
   textHashtags.readOnly = false;
@@ -87,14 +77,14 @@ const setUserFormSubmit = () => {
     const isValid = pristine.validate();
     if (isValid) {
       const formData = new FormData(evt.target);
-      startSendData();
-      sendData(formData,()=>(closeUploadModal(),createSuccessMessage()))
+      startSendingData();
+      sendData(formData).then(()=>(closeUploadModal(),createSuccessMessage()))
         .catch(
           () => (createSuccessMessage(false))
         )
-        .finally(EndSendData);
+        .finally(EndSendingData);
     }
   });
 };
 
-export {renderModalForm, setUserFormSubmit};
+export {setUserFormSubmit};

@@ -1,10 +1,10 @@
 import {HASHTAG_MAX_COUNT, COMMENT_MAX_LENGTH, HASHTAG_VALID, ErrorMessages} from './data.js';
 
-const uploadForm = document.querySelector('.img-upload__form');
+const form = document.querySelector('.img-upload__form');
 const textHashtags = document.querySelector('.text__hashtags');
 const textDescription = document.querySelector('.text__description');
 
-const pristine = new Pristine(uploadForm ,{
+const pristine = new Pristine(form ,{
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper--error'
