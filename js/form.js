@@ -6,14 +6,14 @@ import {sendData} from './api.js';
 import {createSuccessMessage} from './message.js';
 import {SubmitButtonText} from './data.js';
 
-const body = document.querySelector('body');
-const uploadForm = document.querySelector('.img-upload__form');
-const uploadFile = body.querySelector('#upload-file');
-const uploadOverlay = body.querySelector('.img-upload__overlay');
-const uploadModalCancel = body.querySelector('.img-upload__cancel');
-const buttonUploadImgSubmit = document.querySelector('.img-upload__submit');
-const textHashtags = document.querySelector('.text__hashtags');
-const textDescription = document.querySelector('.text__description');
+const bodyElement = document.querySelector('body');
+const uploadFormElement = document.querySelector('.img-upload__form');
+const uploadFileElement = bodyElement.querySelector('#upload-file');
+const uploadOverlayElement = bodyElement.querySelector('.img-upload__overlay');
+const uploadModalCancelElement = bodyElement.querySelector('.img-upload__cancel');
+const buttonUploadImgSubmitElement = document.querySelector('.img-upload__submit');
+const textHashtagsElement = document.querySelector('.text__hashtags');
+const textDescriptionElement = document.querySelector('.text__description');
 
 const onWindowKeyDown = (evt) => {
   if (isEscapeKey(evt) && (!evt.target.closest('.img-upload__field-wrapper'))) {
@@ -25,12 +25,12 @@ const onWindowKeyDown = (evt) => {
 const onUploadModalCancelClick = () => closeUploadModal();
 
 function closeUploadModal () {
-  uploadForm.reset();
+  uploadFormElement.reset();
   pristine.reset();
-  body.classList.remove('modal-open');
-  uploadOverlay.classList.add('hidden');
+  bodyElement.classList.remove('modal-open');
+  uploadOverlayElement.classList.add('hidden');
   document.removeEventListener('keydown', onWindowKeyDown);
-  uploadModalCancel.removeEventListener('click', onUploadModalCancelClick);
+  uploadModalCancelElement.removeEventListener('click', onUploadModalCancelClick);
   removeListenersToScaleButton();
   removeEffectListener();
   resetEffects();
@@ -38,41 +38,41 @@ function closeUploadModal () {
 }
 
 function openUploadModal () {
-  body.classList.add('modal-open');
-  uploadOverlay.classList.remove('hidden');
+  bodyElement.classList.add('modal-open');
+  uploadOverlayElement.classList.remove('hidden');
   document.addEventListener('keydown', onWindowKeyDown);
-  uploadModalCancel.addEventListener('click',onUploadModalCancelClick);
+  uploadModalCancelElement.addEventListener('click',onUploadModalCancelClick);
   addListenersToScaleButton();
   addEffectListener();
 }
 
 const onUploadModalClick = () => openUploadModal();
-uploadFile.addEventListener('change', onUploadModalClick);
+uploadFileElement.addEventListener('change', onUploadModalClick);
 
 const blockSubmitButton = () => {
-  buttonUploadImgSubmit.disabled = true;
+  buttonUploadImgSubmitElement.disabled = true;
 };
 
 const unblockSubmitButton = () => {
-  buttonUploadImgSubmit.disabled = false;
+  buttonUploadImgSubmitElement.disabled = false;
 };
 
 const startSendingData = () => {
   blockSubmitButton();
-  buttonUploadImgSubmit.textContent = SubmitButtonText.SENDING;
-  textHashtags.readOnly = true;
-  textDescription.readOnly = true;
+  buttonUploadImgSubmitElement.textContent = SubmitButtonText.SENDING;
+  textHashtagsElement.readOnly = true;
+  textDescriptionElement.readOnly = true;
 };
 
 const EndSendingData = () => {
   unblockSubmitButton();
-  buttonUploadImgSubmit.textContent = SubmitButtonText.IDLE;
-  textHashtags.readOnly = false;
-  textDescription.readOnly = false;
+  buttonUploadImgSubmitElement.textContent = SubmitButtonText.IDLE;
+  textHashtagsElement.readOnly = false;
+  textDescriptionElement.readOnly = false;
 };
 
 const setUserFormSubmit = () => {
-  uploadForm.addEventListener('submit', (evt) => {
+  uploadFormElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const isValid = pristine.validate();
     if (isValid) {

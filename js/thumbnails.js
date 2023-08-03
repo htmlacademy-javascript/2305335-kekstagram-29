@@ -3,7 +3,7 @@ const thumbnailTemplate = document.querySelector('#picture')
   .content
   .querySelector('.picture');
 
-function renderPictures (arr) {
+const renderPictures = (arr) => {
   document.querySelectorAll('.picture').forEach((element)=>element.remove());
   const fragment = document.createDocumentFragment();
   arr.forEach(({url, description, likes, comments, id}) => {
@@ -17,6 +17,6 @@ function renderPictures (arr) {
   });
 
   thumbnailContainer.appendChild(fragment);
-}
+};
 
 export {renderPictures};
