@@ -1,10 +1,10 @@
 import {HASHTAG_MAX_COUNT, COMMENT_MAX_LENGTH, HASHTAG_VALID, ErrorMessages} from './data.js';
 
-const form = document.querySelector('.img-upload__form');
-const textHashtags = document.querySelector('.text__hashtags');
-const textDescription = document.querySelector('.text__description');
+const formElement = document.querySelector('.img-upload__form');
+const textHashtagsElement = document.querySelector('.text__hashtags');
+const textDescriptionElement = document.querySelector('.text__description');
 
-const pristine = new Pristine(form ,{
+const pristine = new Pristine(formElement, {
   classTo: 'img-upload__field-wrapper',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextClass: 'img-upload__field-wrapper--error'
@@ -20,9 +20,9 @@ const hasUniqueTags = (tags) => {
 };
 const hasValidCountLengthComment = (value) => value.length <= COMMENT_MAX_LENGTH;
 
-pristine.addValidator(textHashtags, hasValidCount, ErrorMessages.INVALID_COUNT, 4, true);
-pristine.addValidator(textHashtags, hasValidTags, ErrorMessages.INVALID_HASHTAG, 3, true);
-pristine.addValidator(textHashtags, hasUniqueTags, ErrorMessages.NOT_UNIQUE, 2, true);
-pristine.addValidator(textDescription, hasValidCountLengthComment, ErrorMessages.INVALID_LENGTH_COMMENT, 1, true);
+pristine.addValidator(textHashtagsElement, hasValidCount, ErrorMessages.INVALID_COUNT, 4, true);
+pristine.addValidator(textHashtagsElement, hasValidTags, ErrorMessages.INVALID_HASHTAG, 3, true);
+pristine.addValidator(textHashtagsElement, hasUniqueTags, ErrorMessages.NOT_UNIQUE, 2, true);
+pristine.addValidator(textDescriptionElement, hasValidCountLengthComment, ErrorMessages.INVALID_LENGTH_COMMENT, 1, true);
 
 export {pristine};

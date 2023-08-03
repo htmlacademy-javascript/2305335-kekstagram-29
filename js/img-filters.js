@@ -4,8 +4,8 @@ import {COUNT_RANDOM_PHOTOS, FilterType} from './data.js';
 let currentFilter = FilterType.DEFAULT;
 let defaultPictures = [];
 
-const filtersList = document.querySelector('.img-filters');
-const filterButtons = document.querySelectorAll('.img-filters__button');
+const filtersListElement = document.querySelector('.img-filters');
+const filterButtonsElement = document.querySelectorAll('.img-filters__button');
 
 const getFilters = () => {
   if (currentFilter === FilterType.DEFAULT) {
@@ -27,20 +27,20 @@ const onFiltersClick = (evt, callback) =>{
     }
     const filterButton = evt.target;
     currentFilter = evt.target.id;
-    filterButtons.forEach((button) => button.classList.remove('img-filters__button--active'));
+    filterButtonsElement.forEach((button) => button.classList.remove('img-filters__button--active'));
     filterButton.classList.add('img-filters__button--active');
     callback(getFilters());
   }
 };
 
 const addFilterListener = (callback) => {
-  filtersList.addEventListener('click', (evt) => {
+  filtersListElement.addEventListener('click', (evt) => {
     onFiltersClick(evt, callback);
   });
 };
 
 const showFilters = (pictures, callback) => {
-  filtersList.classList.remove('img-filters--inactive');
+  filtersListElement.classList.remove('img-filters--inactive');
   defaultPictures = pictures.slice();
   addFilterListener(callback);
 };

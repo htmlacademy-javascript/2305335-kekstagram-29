@@ -3,17 +3,17 @@ import {EFFECTS} from './data.js';
 const DEFAULT_EFFECT = EFFECTS[0];
 let currentEffect = DEFAULT_EFFECT;
 
-const sliderContainer = document.querySelector('.img-upload__effect-level');
-const slider = document.querySelector('.effect-level__slider');
-const effectSliderValue = document.querySelector('.effect-level__value');
-const effectsList = document.querySelector('.img-upload__effects');
-const imagePreview = document.querySelector('.img-upload__preview img');
+const sliderContainerElement = document.querySelector('.img-upload__effect-level');
+const sliderElement = document.querySelector('.effect-level__slider');
+const effectSliderValueElement = document.querySelector('.effect-level__value');
+const effectsListElement = document.querySelector('.img-upload__effects');
+const imagePreviewElement = document.querySelector('.img-upload__preview img');
 
-const showSliderContainer = () => sliderContainer.classList.remove('hidden');
-const hideSliderContainer = () => sliderContainer.classList.add('hidden');
+const showSliderContainer = () => sliderContainerElement.classList.remove('hidden');
+const hideSliderContainer = () => sliderContainerElement.classList.add('hidden');
 
 const createSlider = () => {
-  noUiSlider.create(slider, {
+  noUiSlider.create(sliderElement, {
     start: DEFAULT_EFFECT.max,
     range: {
       min: DEFAULT_EFFECT.min,
@@ -27,7 +27,7 @@ const createSlider = () => {
 const isDefault = () => currentEffect === DEFAULT_EFFECT;
 
 const updateSettingsSlider = () => {
-  slider.noUiSlider.updateOptions({
+  sliderElement.noUiSlider.updateOptions({
     start: currentEffect.max,
     range: {
       min: currentEffect.min,
@@ -52,27 +52,27 @@ const onEffectsChange = (evt) => {
 };
 
 const onSliderUpdate = () => {
-  const sliderValue = slider.noUiSlider.get();
+  const sliderValue = sliderElement.noUiSlider.get();
   if (isDefault()) {
-    imagePreview.style.filter = DEFAULT_EFFECT.style;
+    imagePreviewElement.style.filter = DEFAULT_EFFECT.style;
   } else{
-    imagePreview.style.filter = `${currentEffect.style}(${sliderValue}${currentEffect.unit})`;
+    imagePreviewElement.style.filter = `${currentEffect.style}(${sliderValue}${currentEffect.unit})`;
   }
-  effectSliderValue.value = sliderValue;
+  effectSliderValueElement.value = sliderValue;
 };
 
 const addEffectListener = () => {
-  effectsList.addEventListener('change', onEffectsChange);
+  effectsListElement.addEventListener('change', onEffectsChange);
 };
 
 const removeEffectListener = () => {
-  effectsList.removeEventListener('change', onEffectsChange);
+  effectsListElement.removeEventListener('change', onEffectsChange);
 };
 
 const setDefaultSlider = () => {
   createSlider();
   hideSliderContainer();
-  slider.noUiSlider.on('update', onSliderUpdate);
+  sliderElement.noUiSlider.on('update', onSliderUpdate);
 };
 
 const resetEffects = () => {
